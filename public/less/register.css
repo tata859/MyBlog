@@ -1,0 +1,41 @@
+body {
+  padding: 50px 50px 0 50px;
+  background-color: gainsboro;
+}
+body .reg {
+  width: 100%;
+  height: 580px;
+  background-color: white;
+}
+body .reg p {
+  margin-right: 100px;
+  margin-left: 100px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  letter-spacing: 5px;
+  border-bottom: 2px solid black;
+}
+body .reg .layui-form {
+  display: block;
+  margin: 40px auto;
+  width: 480px;
+}
+body .reg .layui-form .layui-form-item {
+  margin-bottom: 25px;
+}
+body .reg .layui-form .layui-form-item .layui-input-inline {
+  width: 250px;
+}
+body .reg .layui-form .hav {
+  margin: auto;
+  width: 320px;
+}
+body .reg .layui-form .hav span {
+  margin-left: 50px;
+  padding-right: 20px;
+}
+body .reg .layui-form .hav a {
+  color: red;
+}
+/*# sourceMappingURL=register.css.map */
