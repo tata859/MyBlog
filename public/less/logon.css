@@ -39,18 +39,24 @@ body {
 .logon .sign {
   margin: auto;
   width: 220px;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
 }
 .logon .sign .sign-l {
   float: left;
-  letter-spacing: 5px;
+  padding-left: 20px;
 }
 .logon .sign .sign-r {
   float: right;
 }
 .layui-form-label img {
   width: 25px;
+  height: 30px;
+}
+.foot {
+  margin: auto;
+  padding-left: 40px;
+  width: 200px;
   height: 30px;
 }
 /*# sourceMappingURL=logon.css.map */

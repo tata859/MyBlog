@@ -1,13 +1,64 @@
-.wrap {
-  width: 500px;
-  height: 200px;
-  border: 1px solid red;
-  background-image: url("../images/1.jpg");
+.layui-tab {
+  height: 605px;
 }
-.wrap .ap {
-  width: 200px;
-  height: 200px;
-  border: 1px solid red;
-  background-image: url("../images/1.jpg");
+#my-content {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  border-radius: 50%;
+  transition: color 2S;
 }
-/*# sourceMappingURL=origin.css.map */
+#my-content .Head-portrait {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  width: 50px;
+  height: 50px;
+}
+#my-content .Head-portrait img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#my-content #layui-nav-child {
+  position: absolute;
+  top: 39px;
+  left: -20px;
+  width: 100px;
+  margin-top: 10px;
+  display: none;
+  line-height: 40px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  border: 1px solid #d2d2d2;
+}
+#my-content #layui-nav-child li {
+  margin: auto;
+  width: 60px;
+  color: #9F9F9F;
+}
+#my-content .muen {
+  position: absolute;
+  top: 50px;
+  display: none;
+  right: -18px;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  border: 1px solid #d2d2d2;
+}
+#my-content .muen #button {
+  margin: 5px auto;
+  width: 30px;
+}
+#my-content .muen #button li {
+  line-height: 30px;
+  color: #8D8D8D;
+}
+#my-content .muen #button a:hover {
+  color: #FF00FF;
+}
+/*# sourceMappingURL=index.css.map */
