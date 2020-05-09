@@ -66,6 +66,7 @@ app.post("/usercenter",(req,res)=>{
 
 //个人信息路由
 app.get("/userInfo",require("./router/userInfo"))
+
 //favicon.ico路由
 app.get("/favicon.ico",(req,res)=>{
     res.sendFile(path.join(__dirname,"public/images/1.jpg"))
