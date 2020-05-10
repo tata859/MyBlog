@@ -1,0 +1,90 @@
+#centent {
+  min-width: 600px;
+  height: 600px;
+}
+#centent .centent-head {
+  height: 55px;
+  background: url("../images/wujiaoxing.jpg");
+}
+#centent .centent-body {
+  margin: auto;
+  max-width: 1000px;
+  min-width: 800px;
+}
+#centent .centent-body .centent-body-nav {
+  float: left;
+  margin-top: 30px;
+  width: 25%;
+}
+#centent .centent-body .centent-body-nav .centent-body-title {
+  padding-left: 10px;
+  height: 55px;
+  line-height: 55px;
+  background-color: #f3f5f8;
+  border: 1px solid ghostwhite;
+  box-shadow: 0 1px 1px gray;
+}
+#centent .centent-body .centent-body-nav .centent-body-tab {
+  height: 450px;
+  border: 1px solid ghostwhite;
+}
+#centent .centent-body .centent-body-nav .centent-body-tab li {
+  padding-left: 10px;
+  height: 60px;
+  line-height: 60px;
+  border: 1px solid #e1e4e8;
+}
+#centent .centent-body .centent-body-nav .centent-body-tab li:hover {
+  color: dodgerblue;
+}
+#centent .centent-body .centent-body-con {
+  float: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 3%;
+  min-width: 70%;
+}
+#centent .centent-body .centent-body-con .layui-table {
+  margin-top: 0;
+}
+#centent .centent-body .centent-body-con .layui-table thead tr th {
+  height: 35px;
+  text-align: center;
+  font-size: 18px;
+}
+#centent .centent-body .centent-body-con .layui-table tbody tr td {
+  height: 35px;
+}
+#centent .centent-body .centent-body-pwd {
+  float: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 3%;
+  width: 70%;
+}
+#centent .centent-body .centent-body-pwd .layui-form {
+  margin: auto;
+  width: 500px;
+}
+#centent .centent-body .centent-body-pwd .layui-form h2 {
+  margin: 30px auto;
+  width: 340px;
+  color: #757575;
+}
+#centent .centent-body .centent-body-pwd .layui-form .layui-form-item {
+  margin-bottom: 30px;
+}
+#centent .centent-body .centent-body-pwd .layui-form p {
+  font-size: 20px;
+  color: #757575;
+}
+#centent .centent-body .centent-body-pwd .layui-form p:nth-child(7) {
+  text-indent: 2em;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+/*# sourceMappingURL=userInfo.css.map */

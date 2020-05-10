@@ -1,5 +1,12 @@
-const user=require("../model/user")
+const user=require("../model/user"),
+      express=require("express"),
+      router=express.Router();
 
-module.exports=function (req,res) {
-    
-}
+//主路由
+router.get("/",(req,res)=>{
+    res.render("userInfo")
+})
+/*router.get("/baseInfo",(req,res)=>{
+    res.render("baseInfo")
+})*/
+module.exports=router;

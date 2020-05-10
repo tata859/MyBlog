@@ -49,6 +49,12 @@ app.use("/register",require("./router/register"))
 //登陆路由
 app.use("/logon",require("./router/logon"))
 
+//个人信息路由
+app.use("/userInfo",require("./router/userInfo"))
+
+//文章路由
+app.use("/article",require("./router/article"))
+
 //退出登录路由
 app.get("/logonout",(req,res)=>{
     req.session.destroy()
@@ -64,8 +70,7 @@ app.post("/usercenter",(req,res)=>{
     }
 })
 
-//个人信息路由
-app.get("/userInfo",require("./router/userInfo"))
+
 
 //favicon.ico路由
 app.get("/favicon.ico",(req,res)=>{
