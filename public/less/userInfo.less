@@ -1,0 +1,118 @@
+//all..........................................................................................
+#centent{
+  min-width: 600px;
+  height: 600px;
+
+  //头部............................................................................................
+    .centent-head{
+      height: 55px;
+      //background-color: #393D49;
+      background: url("../images/wujiaoxing.jpg");
+    }
+  //内容............................................................................................
+    .centent-body{
+      margin: auto;
+      max-width: 1000px;
+      min-width: 800px;
+        .centent-body-nav{
+          float: left;
+          margin-top: 30px;
+          width: 25%;
+          //title...................................................................
+          .centent-body-title{
+            padding-left: 10px;
+            //width: 210px;
+            height: 55px;
+            line-height: 55px;
+            background-color: #f3f5f8;
+            border: 1px solid ghostwhite;
+            box-shadow: 0 1px 1px gray;
+          }
+          //...........................................................................................
+          .centent-body-tab{
+            //width: 220px;
+            height: 450px;
+            border: 1px solid ghostwhite;
+            //box-shadow: 0 2px 4px gray;
+            //background-color: gainsboro;
+
+            //.......................................................................
+            li{
+              padding-left: 10px;
+              height: 60px;
+              line-height: 60px;
+              border: 1px solid #e1e4e8
+              //box-shadow: 0 2px 2px gray;
+            }
+            li:hover{
+              color: dodgerblue;
+            }
+          }
+        }
+
+        //基础信息...........................................................................................
+        .centent-body-con{
+          float: left;
+          margin-top: 30px;
+          margin-bottom: 30px;
+          margin-left: 3%;
+          min-width: 70%;
+
+            //基础信息..........................................
+            .layui-table{
+            margin-top: 0;
+
+            //.......................................
+            thead tr th{
+              height: 35px;
+              text-align: center;
+              font-size: 18px;
+            }
+            tbody tr td{
+              height: 35px;
+            }
+          }
+
+        }
+      //密码修改...........................................................................................
+      .centent-body-pwd{
+        float: left;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 3%;
+        width: 70%;
+
+          //.....................
+          .layui-form{
+            margin: auto;
+            width: 500px;
+            //.....................
+            h2{
+              margin: 30px auto;
+              width: 340px;
+              color: #757575;
+            }
+              //
+            .layui-form-item{
+              margin-bottom: 30px;
+            }
+            p{
+              font-size: 20px;
+              color: #757575;
+
+            }
+            p:nth-child(7){
+              text-indent: 2em;
+            }
+          }
+      }
+    }
+}
+
+//...........................................................................................
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
