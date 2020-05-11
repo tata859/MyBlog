@@ -1,7 +1,7 @@
 const article=require("../model/article"),
       express=require("express"),
       router=express.Router();
-
+//文章发表路由
 router.post("/",(req,res)=>{
 
     if(req.session.userInfo){
@@ -37,6 +37,11 @@ router.post("/",(req,res)=>{
     }else {
         res.send({code:0,msg:"请先登录"});
     }
+})
+
+//文章查找路由
+router.post("/select",(req,res)=>{
+    
 })
 
 module.exports=router;
