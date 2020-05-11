@@ -14,11 +14,10 @@
 <body>
 <div class="layui-tab">
     <ul class=" layui-nav" lay-filter="">
-        <li class="layui-nav-item " ><a href="javascript:;">首页</a></li>
+        <li class="layui-nav-item  layui-this" ><a href="javascript:;">首页</a></li>
         <li class="layui-nav-item "><a href="javascript:;">论坛</a></li>
-
-        <li class="layui-nav-item layui-this"><a href="#">发表文章</a></li>
-        <li class="layui-nav-item"><a href="javascript:;">查找文章</a></li>
+        <li class="layui-nav-item "><a href="#">发表文章</a></li>
+        <li class="layui-nav-item " id="search"><a href="javascript:;">查找文章</a></li>
         <li id="my-content">
             <div class="Head-portrait "><img src="../images/1.jpg" alt=""></div>
             <ul  id="layui-nav-child"> <!-- 二级菜单 -->
@@ -35,10 +34,16 @@
         </li>
     </ul>
     <div class="layui-tab-content">
-        <div class="layui-tab-item ">
+        <div class="layui-tab-item layui-show container" >
+            <div id="content-show">
+                <div class="head-show">全部动态</div>
+                <div class="article-show">
+
+                </div>
             </div>
-        <div class="layui-tab-item">内容2</div>
-        <div class="layui-tab-item layui-show">
+        </div>
+        <div class="layui-tab-item ">内容2</div>
+        <div class="layui-tab-item ">
             <form class="layui-form" action="">
                 <div class="layui-form-item">
                     <label class="layui-form-label">标题</label>
@@ -65,8 +70,50 @@
                 </div>
             </form>
         </div>
-        <div class="layui-tab-item select">
-            内容4
+        <div class="layui-tab-item select ">
+            <div id="select-key">
+                <div class="layui-input-inline">
+                    <input type="text" name="title" id="search-input" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+                </div>
+
+                <div class="layui-input-block">
+                    <div class="layui-btn" id="select">查找</div>
+                </div>
+                <!--<form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="select">查找</button>
+                        </div>
+                    </div>
+                </form>-->
+
+            </div>
+            <table class="layui-table">
+                <colgroup>
+                    <col width="70">
+                    <col width="100">
+                    <col width="140">
+                    <col width="220">
+                    <col width="70">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>昵称</th>
+                    <th>分类</th>
+                    <th>加入时间</th>
+                    <th>内容</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -146,12 +193,93 @@
         let $layuiNavItem=$(".layui-nav-item");
         let $layuiTabItem=$(".layui-tab-item");
         //for (let i=0;i<$layuiNavItem.length;i++) {
-            $layuiNavItem.click(function () {
+        $layuiNavItem.click(function () {
                 $layuiTabItem.removeClass("layui-show");
                 let index=$(this).index();
                 $layuiTabItem[index].classList.add("layui-show")
             })
-        //}
+        //文章查找事件
+        let $search=$("#search")
+        let $select=$("#select")
+        let $searchInput=$("#search-input")
+        let $layuiTbody=$(".select .layui-table tbody")
+        let $articleShow=$(".article-show");
+
+        $search.click(function () {
+            //$select.css("height","50")
+            $.ajax({
+                method:"post",
+                url:"/article/select",
+                data:[],
+                success:add
+            })
+        })
+        $select.click(function () {
+            let val=$searchInput.val()
+            console.log(val);
+            $.ajax({
+                method:"post",
+                url:"/article/select",
+                data:{keyword:val},
+                success:add
+            })
+        })
+        //首页文章
+        $(document).ready(
+
+            $.ajax({
+                method:"post",
+                url:"/article/select",
+                data:[],
+                success:function (date) {
+                    let data=date.msg;
+                    let text="";
+                    data.forEach((v)=>{
+                        text+=`<div class="margin-show">
+                                 <div class="head-info">
+                                    <div class="author-img"></div>
+                                    <div class="article-author">
+                                        <p  style="color: white;font-size: 18px;">${v.title}</p>
+                                        <p>${v.date}</p>
+                                    </div>
+                                 </div>
+                                 <div class="article-contents">${v.content}</div>
+                                 <div class="share"></div>
+                                <textarea name="desc" class="textarea" placeholder="评论"></textarea>
+                               </div>`
+                    })
+                    $articleShow[0].innerHTML=text;
+                }
+            })
+        )
+        function add(date) {
+            let data=date.msg
+            let html=""
+            data.forEach((v)=>{
+                html+=`<tr>
+                           <td>${v.title}</td>
+                           <td>${v.tags}</td>
+                           <td>${v.date}</td>
+                           <td>${v.content}</td>
+                           <th><div class=\"layui-btn\" >删除</div></th>
+                       </tr>`
+            })
+            $layuiTbody[0].innerHTML=html
+        }
+        //评论大小console.log($("textarea"));;
+        $(".container").click(function (e) {
+            var e=e || window.event
+            var elem=e.target;
+            var $textarea=$(".textarea")
+            if($(elem).is($textarea)){
+                $textarea.css("height","20")
+                $(elem).css("height","50")
+            }else {
+                $textarea.css("height","20")
+            }
+
+        })
+
     })()
 </script>
 </div>

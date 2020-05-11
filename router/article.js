@@ -41,7 +41,29 @@ router.post("/",(req,res)=>{
 
 //文章查找路由
 router.post("/select",(req,res)=>{
-    
+
+    let keyword=req.body.keyword;
+    let i="i";
+    let cond={
+        $or:[
+            {title:new RegExp(keyword,i)},
+            {tags:new RegExp(keyword,i)}
+        ]
+    }
+
+    article.find(cond)
+        .then(data=>{
+            if(data){
+                res.send({
+                    code:1,
+                    msg:data
+                })
+            }
+            else {
+
+            }
+        })
+        .catch()
 })
 
 module.exports=router;
