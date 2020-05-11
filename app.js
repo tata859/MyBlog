@@ -54,7 +54,6 @@ app.use("/userInfo",require("./router/userInfo"))
 
 //文章路由
 app.use("/article",require("./router/article"))
-
 //退出登录路由
 app.get("/logonout",(req,res)=>{
     req.session.destroy()
