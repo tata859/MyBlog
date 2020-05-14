@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>个人中心</title>
     <link rel="stylesheet" href="../css/origin.css">
     <link rel="stylesheet" href="../less/userInfo.css">
@@ -17,7 +18,7 @@
     <div class="centent-body">
         <!--菜单栏-->
         <div class="centent-body-nav">
-            <div class="centent-body-title" >个人设定</div>
+            <div class="centent-body-title" >个人中心</div>
             <ul class="centent-body-tab">
                 <li>基础信息</li>
                 <li>我的好友</li>
@@ -30,7 +31,14 @@
             </ul>
         </div>
         <!--基础信息内容-->
-        <div class="centent-body-con hide">
+        <div class="centent-body-con ">
+            <h3>我的资料</h3>
+            <div>
+                <div class="Head-portrait "><img src="../photo/<%=userInfo.photo%>" alt=""></div>
+                <button type="button" class="layui-btn" id="upload">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+            </div>
             <table class="layui-table">
                 <colgroup>
                     <col width="25%">
@@ -46,19 +54,19 @@
                 <tbody>
                 <tr>
                     <td>用户名</td>
-                    <td>11</td>
+                    <td><%=username%></td>
                     <td>性别</td>
-                    <td>男</td>
+                    <td><%=userInfo.sex%></td>
                 </tr>
                 <tr>
-                    <td>许闲心</td>
-                    <td>2016-11-28</td>
+                    <td>出生</td>
+                    <td><%=userInfo.birth%></td>
                     <td>血型</td>
-                    <td>O</td>
+                    <td><%=userInfo.blood%></td>
                 </tr>
                 <tr>
                     <td >个性签名</td>
-                    <td colspan="4">2016-11-28</td>
+                    <td colspan="4"><%=userInfo.status%></td>
                 </tr>
                 </tbody>
             </table>
@@ -75,33 +83,34 @@
                 <tbody>
                 <tr>
                     <td>职业</td>
-                    <td>11</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>公司</td>
-                    <td>2016-11-28</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td >所在地</td>
-                    <td >2016-11-28</td>
+                    <td ></td>
                 </tr>
                 <tr>
                     <td >手机号码</td>
-                    <td >2016-11-28</td>
+                    <td ><%=userInfo.tel%></td>
                 </tr>
                 <tr>
                     <td >邮箱</td>
-                    <td >2016-11-28</td>
+                    <td ><%=userInfo.email%></td>
                 </tr>
                 <tr>
                     <td >个人说明</td>
-                    <td >2016-11-28</td>
+                    <td ></td>
                 </tr>
                 </tbody>
             </table>
+            <div class="preservation">保存</div>
         </div>
         <!--密码修改-->
-        <div class="centent-body-pwd">
+        <div class="centent-body-pwd hide">
             <form class="layui-form" action="">
                 <h2>建议使用复杂的密码，以提高安全性</h2>
                 <div class="layui-form-item">
@@ -136,21 +145,39 @@
                 <p>注：</p>
                 <p id="wo">不要永久使用一个密码，隔断时间更改一次密码以提高安全性</p>
             </form>
-
-            <script>
-                //Demo
-                layui.use('form', function(){
-                    var form = layui.form;
-
-                    //监听提交
-                    form.on('submit(formDemo)', function(data){
-                        layer.msg(JSON.stringify(data.field));
-                        return false;
-                    });
-                });
-            </script>
         </div>
     </div>
 </div>
+<!--<script src="/static/build/layui.js"></script>-->
+<script>
+    //Demo
+    layui.use(['upload','form'], function(){
+        var form = layui.form;
+        var upload = layui.upload;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: '/upload/photo' //上传接口
+            ,done: function(date){
+                //上传完毕回调
+                layer.alert(date.msg,function () {
+                    if(date.code===1){
+                        location.reload()
+                    }
+                    else {
+                        layer.close(layer.index)
+                    }
+                })
+            }
+
+        });
+    });
+</script>
 </body>
 </html>

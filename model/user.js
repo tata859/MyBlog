@@ -16,19 +16,31 @@ let userSchema=new Schema({
     userInfo:{
         sex:{
             type:String,
-            enum:["男","女"]
+            enum:["男","女","不详"],
+            default:"不详"
+        },
+        birth:{
+            type:String,
         },
         age:{
             type:String,
-            min:0
+            min:0,
         },
         tel:{
             type:String,
-            match:[/^1[356789]\d{9}$/]
+            match:[/^1[356789]\d{9}$/],
         },
         email:{
             type:String,
-            match:/^[\da-z]+@[\da-z]+(\.[a-z]+)+$/i
+            match:/^[\da-z]+@[\da-z]+(\.[a-z]+)+$/i,
+        },
+        photo:{
+            type:String,
+            default:"1.jpg"
+        },
+        blood:{
+            type:String,
+            match:/^([ab]{0,2}|[o]{0,2})$/i,
         },
         status:{
             type:String,

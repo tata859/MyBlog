@@ -12,6 +12,9 @@
   border-radius: 50%;
   transition: color 2S;
 }
+#my-content:hover #layui-nav-child {
+  display: block;
+}
 #my-content .Head-portrait {
   position: absolute;
   top: -4px;
@@ -101,7 +104,6 @@
   padding-top: 50px;
   min-width: 700px;
   max-width: 800px;
-  height: 300px;
 }
 .container #content-show .head-show {
   line-height: 24px;
@@ -111,7 +113,8 @@
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
   color: #8590a6;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 600;
   border: 1px solid #e7eaf1;
   box-shadow: 0 1px 3px rgba(0, 37, 55, 0.05);
   box-sizing: border-box;
@@ -171,9 +174,12 @@
   }
 }
 .container #content-show .article-show .margin-show .share {
+  margin-top: 10px;
+  margin-bottom: 10px;
   height: 30px;
+  background-color: gainsboro;
 }
-.container #content-show .article-show .margin-show textarea {
+.container #content-show .article-show .margin-show .textarea {
   display: block;
   margin: auto;
   padding-top: 5px;

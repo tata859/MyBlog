@@ -40,9 +40,10 @@ app.use(session({
        url:"mongodb://localhost:27017/MyBlog"
     })
 }))
-app.get("/",(req,res)=>{
+/*app.get("/",(req,res)=>{
     res.render("index")
-})
+})*/
+app.get("/",require("./router/page"))
 //注册路由
 app.use("/register",require("./router/register"))
 
@@ -51,6 +52,9 @@ app.use("/logon",require("./router/logon"))
 
 //个人信息路由
 app.use("/userInfo",require("./router/userInfo"))
+
+//图片上传接口
+app.use("/upload",require("./router/upload"))
 
 //文章路由
 app.use("/article",require("./router/article"))
@@ -63,9 +67,9 @@ app.get("/logonout",(req,res)=>{
 //检测session是否存在
 app.post("/usercenter",(req,res)=>{
     if(req.session.userInfo){
-        res.send({code:1,msg:"用户存在"})
+        res.render("index",{code:1,msg:"用户存在"})
     }else {
-        res.send({code:0,msg:"用户不存在"})
+        res.render("index",{code:0,msg:"用户不存在"})
     }
 })
 

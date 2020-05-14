@@ -51,9 +51,10 @@ router.post("/select",(req,res)=>{
         ]
     }
 
-    article.find(cond)
+    article.find(cond).sort({date:-1})
         .then(data=>{
             if(data){
+                //console.log(data);
                 res.send({
                     code:1,
                     msg:data

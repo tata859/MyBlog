@@ -4,7 +4,20 @@ const user=require("../model/user"),
 
 //主路由
 router.get("/",(req,res)=>{
-    res.render("userInfo")
+    if(req.session.userInfo){
+        user.findById(req.session.userInfo._id)
+            .then(data=>{
+                console.log(data);
+                if(data){
+                    res.render("userInfo",data)
+                }
+
+            })
+    }
+    else {
+        res.send({code:0,msg:"请先登录"})
+    }
+
 })
 /*router.get("/baseInfo",(req,res)=>{
     res.render("baseInfo")
