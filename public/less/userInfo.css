@@ -44,6 +44,26 @@
   margin-left: 3%;
   min-width: 70%;
 }
+#centent .centent-body .centent-body-con h3 {
+  padding-left: 30px;
+  margin-bottom: 30px;
+  height: 55px;
+  color: #f3f5f8;
+  line-height: 55px;
+  color: rgba(80, 80, 80, 0.7);
+  border: 1px solid ghostwhite;
+}
+#centent .centent-body .centent-body-con .Head-portrait {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid gainsboro;
+}
+#centent .centent-body .centent-body-con .Head-portrait img {
+  width: 150px;
+  height: 150px;
+}
 #centent .centent-body .centent-body-con .layui-table {
   margin-top: 0;
 }

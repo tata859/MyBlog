@@ -19,16 +19,16 @@
         <li class="layui-nav-item "><a href="#">发表文章</a></li>
         <li class="layui-nav-item " id="search"><a href="javascript:;">查找文章</a></li>
         <li id="my-content">
-            <div class="Head-portrait "><img src="../images/1.jpg" alt=""></div>
-            <ul  id="layui-nav-child"> <!-- 二级菜单 -->
-                <li><a href="userInfo" target="_blank">个人信息</a></li>
-                <li><a href="javascript:" target="_blank">我的文章</a></li>
-                <li><a href="logonout">退出登录</a></li>
+            <div class='Head-portrait '><img src="../photo/<%=imgs.url%>" alt=""></div>
+            <ul  id="layui-nav-child">   <!--二级菜单-->
+                <li><a href="<%= Info.url %>" target="<%= Info.target%>"><%= Info.con %></a></li>
+                <li><a href="<%= art.url %>" target="<%= art.target%>"><%= art.con %></a></li>
+                <li><a href="<%= logonout.url %>"><%= logonout.con %></a></li>
             </ul>
-            <div class="muen ">
-                <ul  id="button"> <!-- 二级菜单 -->
-                    <li><a href="/logon">登陆</a></li>
-                    <li><a href="/register">注册</a></li>
+           <div class="muen ">
+                <ul  id="button">        <!--二级菜单-->
+                    <li><a href="">登陆</a></li>
+                    <li><a href="">注册</a></li>
                 </ul>
             </div>
         </li>
@@ -79,19 +79,6 @@
                 <div class="layui-input-block">
                     <div class="layui-btn" id="select">查找</div>
                 </div>
-                <!--<form class="layui-form" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" placeholder="请输入关键字" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit lay-filter="select">查找</button>
-                        </div>
-                    </div>
-                </form>-->
 
             </div>
             <table class="layui-table">
@@ -170,12 +157,12 @@
         let $mycontent=$("#my-content"),
             $muen = $("#my-content .muen")
             $layuinavchild = $("#layui-nav-child");
-        $mycontent.hover(function () {
+        /*$mycontent.hover(function () {
             $.ajax({
                 method:"post",
                 url:"/usercenter",
                 success:function (data) {
-                     if(data.code===1){
+                    if(data.code===1){
                              $layuinavchild.addClass("layui-show")
                              $muen.removeClass("layui-show")
 
@@ -188,16 +175,17 @@
             },function () {
                 $layuinavchild.removeClass("layui-show");
                 $muen.removeClass("layui-show");
-        });
+        });*/
         //导航栏clic事件
         let $layuiNavItem=$(".layui-nav-item");
         let $layuiTabItem=$(".layui-tab-item");
-        //for (let i=0;i<$layuiNavItem.length;i++) {
         $layuiNavItem.click(function () {
                 $layuiTabItem.removeClass("layui-show");
                 let index=$(this).index();
-                $layuiTabItem[index].classList.add("layui-show")
-            })
+            console.log(index);
+            $layuiTabItem[index].classList.add("layui-show")
+        })
+
         //文章查找事件
         let $search=$("#search")
         let $select=$("#select")
@@ -235,17 +223,25 @@
                     let data=date.msg;
                     let text="";
                     data.forEach((v)=>{
+                        let Dates=new Date(v.date)
+                        let date=Dates.toLocaleString("chinese",{hour12:false});
+                        console.log(Dates);
                         text+=`<div class="margin-show">
                                  <div class="head-info">
                                     <div class="author-img"></div>
                                     <div class="article-author">
                                         <p  style="color: white;font-size: 18px;">${v.title}</p>
-                                        <p>${v.date}</p>
+                                        <p>${date}</p>
                                     </div>
                                  </div>
                                  <div class="article-contents">${v.content}</div>
-                                 <div class="share"></div>
-                                <textarea name="desc" class="textarea" placeholder="评论"></textarea>
+                                 <div class="share">
+                                    <div class="share-browse"></div>
+                                    <div class="share-thumbs"></div>
+                                    <div class="share-comment"></div>
+                                    <div class="share-con"></div>
+                                 </div>
+                                <div name="desc" class="textarea" placeholder="评论"></div>
                                </div>`
                     })
                     $articleShow[0].innerHTML=text;
