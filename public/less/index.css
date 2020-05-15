@@ -177,7 +177,42 @@
   margin-top: 10px;
   margin-bottom: 10px;
   height: 30px;
-  background-color: gainsboro;
+}
+.container #content-show .article-show .margin-show .share .share-browse {
+  margin-right: 20px;
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  vertical-align: top;
+}
+.container #content-show .article-show .margin-show .share .share-thumbs {
+  float: right;
+  margin-right: 20px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/tubiao.png");
+  background-position: -50px -24px;
+}
+.container #content-show .article-show .margin-show .share .share-comment {
+  float: right;
+  margin-right: 20px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/tubiao.png");
+  background-position: -27px -863px;
+}
+.container #content-show .article-show .margin-show .share .share-con {
+  float: right;
+  margin-right: 30px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/tubiao.png");
+  background-position: -40px -50px;
 }
 .container #content-show .article-show .margin-show .textarea {
   display: block;

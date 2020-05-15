@@ -45,6 +45,18 @@ let userSchema=new Schema({
         status:{
             type:String,
             default:"这个人很懒，什么都没留下......."
+        },
+        person:{
+            type:String,
+        },
+        Location:{
+            type:String,
+        },
+        company:{
+            type:String,
+        },
+        occupation:{
+            type:String,
         }
     }
 })

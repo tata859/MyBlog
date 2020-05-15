@@ -180,8 +180,8 @@
         let $layuiNavItem=$(".layui-nav-item");
         let $layuiTabItem=$(".layui-tab-item");
         $layuiNavItem.click(function () {
-                $layuiTabItem.removeClass("layui-show");
-                let index=$(this).index();
+            $layuiTabItem.removeClass("layui-show");
+            let index=$(this).index();
             console.log(index);
             $layuiTabItem[index].classList.add("layui-show")
         })
@@ -236,10 +236,11 @@
                                  </div>
                                  <div class="article-contents">${v.content}</div>
                                  <div class="share">
-                                    <div class="share-browse"></div>
-                                    <div class="share-thumbs"></div>
-                                    <div class="share-comment"></div>
+                                    <div class="share-browse">浏览数0</div>
                                     <div class="share-con"></div>
+                                    <div class="share-comment"></div>
+                                    <div class="share-thumbs"></div>
+
                                  </div>
                                 <div name="desc" class="textarea" placeholder="评论"></div>
                                </div>`
