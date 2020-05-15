@@ -7,7 +7,7 @@ router.get("/",(req,res)=>{
     if(req.session.userInfo){
         user.findById(req.session.userInfo._id)
             .then(data=>{
-                console.log(data);
+                //console.log(data);
                 if(data){
                     res.render("userInfo",data)
                 }

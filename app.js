@@ -53,6 +53,12 @@ app.use("/logon",require("./router/logon"))
 //个人信息路由
 app.use("/userInfo",require("./router/userInfo"))
 
+//密码修改
+app.post("/updatepwd",require("./router/updatepwd"))
+
+//个人信息
+app.post("/updateInfo",require("./router/updateInfo"))
+
 //图片上传接口
 app.use("/upload",require("./router/upload"))
 

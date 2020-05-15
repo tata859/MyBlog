@@ -31,86 +31,194 @@
             </ul>
         </div>
         <!--基础信息内容-->
-        <div class="centent-body-con ">
-            <h3>我的资料</h3>
-            <div>
-                <div class="Head-portrait "><img src="../photo/<%=userInfo.photo%>" alt=""></div>
-                <button type="button" class="layui-btn" id="upload">
-                    <i class="layui-icon">&#xe67c;</i>上传图片
-                </button>
-            </div>
-            <table class="layui-table">
-                <colgroup>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                </colgroup>
-                <thead>
-                <tr>
-                    <th colspan="4">基础信息</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>用户名</td>
-                    <td><%=username%></td>
-                    <td>性别</td>
-                    <td><%=userInfo.sex%></td>
-                </tr>
-                <tr>
-                    <td>出生</td>
-                    <td><%=userInfo.birth%></td>
-                    <td>血型</td>
-                    <td><%=userInfo.blood%></td>
-                </tr>
-                <tr>
-                    <td >个性签名</td>
-                    <td colspan="4"><%=userInfo.status%></td>
-                </tr>
-                </tbody>
-            </table>
-            <table class="layui-table" style="margin-top: 30px">
-                <colgroup>
-                    <col width="25%">
-                    <col width="75%">
-                </colgroup>
-                <thead>
-                <tr>
-                    <th colspan="2">更多信息</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>职业</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>公司</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td >所在地</td>
-                    <td ></td>
-                </tr>
-                <tr>
-                    <td >手机号码</td>
-                    <td ><%=userInfo.tel%></td>
-                </tr>
-                <tr>
-                    <td >邮箱</td>
-                    <td ><%=userInfo.email%></td>
-                </tr>
-                <tr>
-                    <td >个人说明</td>
-                    <td ></td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="preservation">保存</div>
+        <div class="centent-body-con cen-pos show">
+                <h3>我的资料</h3>
+                <div>
+                    <div class="Head-portrait "><img src="../photo/<%=userInfo.photo%>" alt=""></div>
+                    <button type="button" class="layui-btn" id="upload">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                </div>
+            <form class="layui-form" action="">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="15%">
+                        <col width="35%">
+                        <col width="15%">
+                        <col width="35%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th colspan="4">基础信息</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>用户名</td>
+                        <td>
+                            <div ><%=username%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" value="<%=username%>" lay-verify="昵称"  autocomplete="off" class="layui-input"  disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>性别</td>
+                        <td  class="info-content">
+                            <div class="show"><%=userInfo.sex%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="sex" value="<%=userInfo.sex%>" lay-verify="sex" placeholder="请输入性别" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>出生</td>
+                        <td class="info-content">
+                            <div class="show"><%=userInfo.birth%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="birth" value="<%=userInfo.birth%>" lay-verify="birth" placeholder="请输入出生日期" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>血型</td>
+                        <td class="info-content">
+                            <div class="show"><%=userInfo.blood%></div>
+                            <div class="layui-form-item hide">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="blood" value="<%=userInfo.blood%>" lay-verify="blood" placeholder="请输入血型" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >个性签名</td>
+                        <td colspan="4" class="info-content">
+                            <div class="show "><%=userInfo.status%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="status" value="<%=userInfo.status%>" lay-verify="status" placeholder="请输入个性签名" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="layui-table" style="margin-top: 30px">
+                    <colgroup>
+                        <col width="25%">
+                        <col width="75%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th colspan="2">更多信息</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>职业</td>
+                        <td class="info-content">
+                            <div class="show "><%=userInfo.occupation%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="occupation" value="<%=userInfo.occupation%>" lay-verify="tel" placeholder="请输入从事的职业" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>公司</td>
+                        <td class="info-content">
+                            <div class="show "><%=userInfo.company%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="company" value="<%=userInfo.company%>" lay-verify="" placeholder="请输入公司名称" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >所在地</td>
+                        <td class="info-content">
+                            <div class="show "><%=userInfo.Location%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="Location" value="<%=userInfo.Location%>" lay-verify="" placeholder="请输入所在地" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >手机号码</td>
+                        <td class="info-content">
+                            <div class="show "><%=userInfo.tel%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="tel" value="<%=userInfo.tel%>" lay-verify="tel" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >邮箱</td>
+                        <td class="info-content">
+                            <div class="show "><%=userInfo.email%></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="email" value="<%=userInfo.email%>" lay-verify="tel" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >个人说明</td>
+                        <td class="info-content">
+                            <div class="show "></div>
+                            <div class="layui-form-item hide" >
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="person" value="" lay-verify="tel" placeholder="请输入个人说明" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--<div class="preservation">保存</div>-->
+                <div class="<!--layui-btn--> preservation"  lay-submit lay-filter="updateInfo">保存</div>
+            </form>
         </div>
+        <!--我的好友-->
+        <div class="my-Friends cen-pos">2</div>
+        <!--我的关注-->
+        <div class="my-follow cen-pos ">3</div>
+        <!--我的消息-->
+        <div class="my-news cen-pos ">4</div>
         <!--密码修改-->
-        <div class="centent-body-pwd hide">
+        <div class="centent-body-pwd cen-pos ">
             <form class="layui-form" action="">
                 <h2>建议使用复杂的密码，以提高安全性</h2>
                 <div class="layui-form-item">
@@ -129,16 +237,16 @@
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">新密码</label>
+                    <label class="layui-form-label">确认密码</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="newpassword" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
+                        <input type="password" name="newpwd" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">请确认新密码</div>
                 </div>
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即更改</button>
+                        <button class="layui-btn" lay-submit lay-filter="formpwd">立即更改</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -146,6 +254,12 @@
                 <p id="wo">不要永久使用一个密码，隔断时间更改一次密码以提高安全性</p>
             </form>
         </div>
+        <!--我的文章-->
+        <div class="my-article cen-pos ">6</div>
+        <!--我的评论-->
+        <div class="my-comment cen-pos ">7</div>
+        <!--我的收藏-->
+        <div class="my-Collection cen-pos ">8</div>
     </div>
 </div>
 <!--<script src="/static/build/layui.js"></script>-->
@@ -155,12 +269,44 @@
         var form = layui.form;
         var upload = layui.upload;
 
-        //监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
+        //监听个人信息的修改
+        form.on('submit(updateInfo)', function(data){
+            $.ajax({
+                method:"post",
+                url:"updateInfo",
+                data:data.field,
+                success:function (date) {
+                    layer.alert(date.msg,function () {
+                        if(date.code===1){
+                            location.reload()
+                        }else {
+                            layer.close(layer.index)
+                        }
+                    })
+                }
+            })
             return false;
         });
-        //执行实例
+        //监听密码修改的提交
+        form.on('submit(formpwd)', function(data){
+            //layer.msg(JSON.stringify(data.field));
+            $.ajax({
+                method:"post",
+                url:"updatepwd",
+                data:data.field,
+                success:function (date) {
+                    layer.alert(date.msg,function () {
+                        if(date.code===1){
+                            location.reload()
+                        }else {
+                            layer.close(layer.index)
+                        }
+                    })
+                }
+            })
+            return false;
+        });
+        //执行实例,头像上传
         var uploadInst = upload.render({
             elem: '#upload' //绑定元素
             ,url: '/upload/photo' //上传接口
@@ -178,6 +324,38 @@
 
         });
     });
+</script>
+<script>
+    (function () {
+        //菜单栏控件
+        let $cententControl=$(".centent-body-tab li");
+        let $cenpos=$(".cen-pos")
+        $cententControl.click(function () {
+            let index=$(this).index();
+            $cenpos.removeClass("show")
+            $cenpos[index].classList.add("show")
+        })
+        //基础信息控件
+        let $infoContent=$(".info-content")
+         $infoContent.click(function (e) {
+             var e=e||window.event
+             var elem=e.target;
+             var $lfi=$(".info-content input")
+             if($(elem).is($lfi)){
+                return
+             }
+             else {
+                 $(this).find(".show").toggle()
+                 $(this).find(".hide").toggle()
+             }
+
+             /*e.stopPropagation()
+             e.cancelable
+             e.preventDefault()
+             e.stopImmediatePropagation()
+             return false*/
+         })
+    })()
 </script>
 </body>
 </html>
