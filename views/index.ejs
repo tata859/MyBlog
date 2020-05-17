@@ -192,7 +192,8 @@
         let $searchInput=$("#search-input")
         let $layuiTbody=$(".select .layui-table tbody")
         let $articleShow=$(".article-show");
-
+        let $publishshow=$articleShow[0].children.children
+        console.log($publishshow);
         $search.click(function () {
             //$select.css("height","50")
             $.ajax({
@@ -220,35 +221,55 @@
                 url:"/article/select",
                 data:[],
                 success:function (date) {
+                    console.log(date);
                     let data=date.msg;
+                    let com=date.da;
+                    let commentdate=date.info
                     let text="";
                     data.forEach((v)=>{
                         let Dates=new Date(v.date)
                         let date=Dates.toLocaleString("chinese",{hour12:false});
-                        console.log(Dates);
+                        //console.log(Dates);
                         text+=`<div class="margin-show">
                                  <div class="head-info">
                                     <div class="author-img"></div>
                                     <div class="article-author">
-                                        <p  style="color: white;font-size: 18px;">${v.title}</p>
+                                        <p  style="color: white;font-size: 18px;">${v.author.username}</p>
                                         <p>${date}</p>
                                     </div>
                                  </div>
+                                 <div class="article-title"><a href="/article/  ${v._id}" target="_blank">${v.title}</a></div>
                                  <div class="article-contents">${v.content}</div>
                                  <div class="share">
-                                    <div class="share-browse">浏览数0</div>
+                                    <div class="share-browse">浏览0数</div>
                                     <div class="share-con"></div>
                                     <div class="share-comment"></div>
                                     <div class="share-thumbs"></div>
+                                 </div>
+                                 <div class="publish-show">
 
                                  </div>
-                                <div name="desc" class="textarea" placeholder="评论"></div>
+                                 <div class="publish" >
+                                    <div name="desc" class="textarea"  contenteditable="true"></div>
+                                    <div class="topu" click="addpu()">发表</div>
+
+                                 </div>
+
                                </div>`
                     })
+
+                    /*let commenttext=""
+                    commentdate.forEach((v)=>{
+                        commenttext+=`${v.commentauthorId},${v.commentdata}`
+                    })
+                    //$publishshow[0].innerHTML=commenttext;
+                    console.log(data);
+                    console.log(commentdate);*/
                     $articleShow[0].innerHTML=text;
                 }
-            })
+            }),
         )
+
         function add(date) {
             let data=date.msg
             let html=""
@@ -263,16 +284,44 @@
             })
             $layuiTbody[0].innerHTML=html
         }
-        //评论大小console.log($("textarea"));;
+        //评论大小
         $(".container").click(function (e) {
             var e=e || window.event
             var elem=e.target;
             var $textarea=$(".textarea")
-            if($(elem).is($textarea)){
-                $textarea.css("height","20")
-                $(elem).css("height","50")
+            var $publish=$(".publish")
+            var $topu=$(".topu")
+            if($(elem).is($(".topu"))){
+                let commentdate={
+                    articleId:$(elem).parent().siblings(".article-title").children("a").attr('href').match(/[^\s]+$/g).toString(),
+                    articletitle:$(elem).parent().siblings(".article-title").text(),
+                    commentdata:$(elem).siblings(".textarea").text()
+                }
+                $.ajax({
+                    method:"post",
+                    url:"comment",
+                    data:commentdate,
+                    success:function (date) {
+                        layer.alert(date.msg,function () {
+                            if(date.code===1){
+                                location.reload()
+                            }else {
+                                layer.close(layer.index)
+                                }
+                        })
+                    }
+                })
+
+            }else if($(elem).is($publish)){
+                $publish.css("height","30")
+                $(elem).css("height","100")
+                $textarea.css("height","60")
+            }else if($(elem).parent().is($publish)){
+                $(elem).parent().css("height","30")
+                $(elem).parent().css("height","100")
+                $textarea.css("height","60")
             }else {
-                $textarea.css("height","20")
+                $publish.css("height","30")
             }
 
         })

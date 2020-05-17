@@ -5,7 +5,7 @@ module.exports=function (req,res) {
         let date={};
         let postdate=req.body;
         for(let [key,value] of Object.entries(postdate)){
-            console.log(`${key}:${value}`);
+            //console.log(`${key}:${value}`);
             if(value){
                 date["userInfo."+key]=value;
             }
