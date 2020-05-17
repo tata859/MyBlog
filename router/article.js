@@ -1,4 +1,5 @@
 const article=require("../model/article"),
+      comment=require("../model/comment"),
       express=require("express"),
       router=express.Router();
 //文章发表路由
@@ -51,14 +52,10 @@ router.post("/select",(req,res)=>{
         ]
     }
 
-    article.find(cond).sort({date:-1})
+    article.find(cond).sort({date:-1}).populate("author")
         .then(data=>{
             if(data){
-                //console.log(data);
-                res.send({
-                    code:1,
-                    msg:data
-                })
+                res.send({code:1, msg:data,})
             }
             else {
 
@@ -66,5 +63,11 @@ router.post("/select",(req,res)=>{
         })
         .catch()
 })
+
+//文章访问
+router.get("/:id",(req,res)=>{
+    res.send("暂无界面")
+})
+
 
 module.exports=router;

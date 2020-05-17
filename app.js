@@ -64,6 +64,9 @@ app.use("/upload",require("./router/upload"))
 
 //文章路由
 app.use("/article",require("./router/article"))
+
+//评论
+app.use("/comment",require("./router/comment"))
 //退出登录路由
 app.get("/logonout",(req,res)=>{
     req.session.destroy()
